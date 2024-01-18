@@ -1,7 +1,6 @@
 import { Navbar } from 'components/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 import { HeaderContainer, StyledHeader } from './Layout.styled';
-import { Section } from 'components/Section/Section';
 import { Container } from 'components/Container/Container.styled';
 
 export const Layout = () => {

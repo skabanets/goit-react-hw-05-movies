@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const TrendingMoviesItem = ({ movieInfo }) => {
+export const TrendingsMoviesItem = ({ movieInfo }) => {
   const { id, poster_path, name, title } = movieInfo;
 
   return (

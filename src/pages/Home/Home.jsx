@@ -1,6 +1,6 @@
 import { Section } from 'components/Section/Section';
+import { TrendingsMoviesList } from 'components/TrendingsMoviesList/TrendingsMoviesList';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { getTrendingsMovies } from 'services/api';
 
 const Home = () => {
@@ -12,7 +12,8 @@ const Home = () => {
 
   return (
     <Section title={'Trending today'}>
-      <ul>
+      <TrendingsMoviesList trandingMovies={trandingMovies} />
+      {/* <ul>
         {trandingMovies.map(({ id, poster_path, name, title }) => (
           <li key={id}>
             <Link to={id.toString()}>
@@ -24,7 +25,7 @@ const Home = () => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </Section>
   );
 };
