@@ -1,11 +1,12 @@
 import { TrendingsMoviesItem } from 'components/TrendingsMoviesItem/TrendingsMoviesItem';
+import { StyledTrendingsMovies } from './TrendingsMoviesList.styled';
 
 export const TrendingsMoviesList = ({ trandingMovies }) => {
   return (
-    <ul>
+    <StyledTrendingsMovies>
       {trandingMovies.map(movie => (
         <TrendingsMoviesItem key={movie.id} movieInfo={movie} />
       ))}
-    </ul>
+    </StyledTrendingsMovies>
   );
 };
