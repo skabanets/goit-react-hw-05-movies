@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
-import { StyledTrendingsMovie } from './TrendingsMoviesItem.styles';
+import {
+  MoviePoster,
+  StyledTrendingsMovie,
+} from './TrendingsMoviesItem.styles';
 
 export const TrendingsMoviesItem = ({ movieInfo }) => {
   const { id, poster_path, name, title } = movieInfo;
@@ -7,7 +10,7 @@ export const TrendingsMoviesItem = ({ movieInfo }) => {
   return (
     <StyledTrendingsMovie>
       <Link to={id.toString()}>
-        <img
+        <MoviePoster
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
           alt={name || title}
         />
