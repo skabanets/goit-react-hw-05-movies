@@ -88,10 +88,12 @@ const SingleMovie = () => {
                 ))}
               </GenresList>
             </MovieInfoItem>
-            <MovieInfoItem>
-              <h3>Duration:</h3>
-              <p>{movie.runtime} minutes</p>
-            </MovieInfoItem>
+            {movie.runtime !== 0 && (
+              <MovieInfoItem>
+                <h3>Duration:</h3>
+                <p>{movie.runtime} minutes</p>
+              </MovieInfoItem>
+            )}
             <MovieInfoItem>
               <h3>Additional information:</h3>
               <AdditionalInfolinks>
