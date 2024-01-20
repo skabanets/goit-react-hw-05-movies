@@ -21,8 +21,8 @@ const MovieReviews = () => {
       <Line />
       {movieReviews.length ? (
         <ReviewsList>
-          {movieReviews.map(review => (
-            <li key={review.id}>
+          {movieReviews.map((review, index) => (
+            <li key={index}>
               <h3>Author: {review.author}</h3>
               <ReviewText>{review.content}</ReviewText>
             </li>

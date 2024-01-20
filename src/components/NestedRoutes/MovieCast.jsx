@@ -21,8 +21,8 @@ const MovieCredits = () => {
       <Line />
       {movieCast.length ? (
         <MovieCastList>
-          {movieCast.map(cast => (
-            <ActorCard key={cast.id} cast={cast} />
+          {movieCast.map((cast, index) => (
+            <ActorCard key={index} cast={cast} />
           ))}
         </MovieCastList>
       ) : (

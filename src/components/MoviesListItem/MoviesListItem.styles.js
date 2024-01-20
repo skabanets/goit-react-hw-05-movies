@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTrendingsMovie = styled.li`
+export const StyledMovie = styled.li`
   max-width: 224px;
 `;
 

@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import {
   MoviePoster,
   MovieSubtitle,
-  StyledTrendingsMovie,
-} from './TrendingsMoviesItem.styles';
+  StyledMovie,
+} from './MoviesListItem.styles';
 
-export const TrendingsMoviesItem = ({ movieInfo }) => {
+export const MoviesItem = ({ movieInfo }) => {
   const { id, poster_path, name, title } = movieInfo;
 
   const defaultMoviePoster =
@@ -15,11 +15,11 @@ export const TrendingsMoviesItem = ({ movieInfo }) => {
     : defaultMoviePoster;
 
   return (
-    <StyledTrendingsMovie>
+    <StyledMovie>
       <Link to={`/movies/${id}`}>
         <MoviePoster src={moviePoster} alt={name || title} />
         <MovieSubtitle>{name || title}</MovieSubtitle>
       </Link>
-    </StyledTrendingsMovie>
+    </StyledMovie>
   );
 };

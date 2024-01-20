@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTrendingsMovies = styled.ul`
+export const StyledMoviesList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
