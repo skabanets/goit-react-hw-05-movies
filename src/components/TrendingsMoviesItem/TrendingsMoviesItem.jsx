@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
   MoviePoster,
+  MovieSubtitle,
   StyledTrendingsMovie,
 } from './TrendingsMoviesItem.styles';
 
@@ -14,7 +15,7 @@ export const TrendingsMoviesItem = ({ movieInfo }) => {
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
           alt={name || title}
         />
-        <h3>{name || title}</h3>
+        <MovieSubtitle>{name || title}</MovieSubtitle>
       </Link>
     </StyledTrendingsMovie>
   );

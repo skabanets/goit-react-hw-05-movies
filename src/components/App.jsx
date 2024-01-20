@@ -4,7 +4,7 @@ import Home from 'pages/Home/Home';
 import Movies from 'pages/Movies/Movies';
 import NotFound from 'pages/NotFound/NotFound';
 import SingleMovie from 'pages/SingleMovie/SingleMovie';
-import MovieCredits from './NestedRoutes/MovieCredits';
+import MovieCast from './NestedRoutes/MovieCast';
 import MovieReviews from './NestedRoutes/MovieReviews ';
 
 export const App = () => {
@@ -17,7 +17,7 @@ export const App = () => {
           <Route path="movies" element={<Movies />} />
 
           <Route path="movies/:movieId" element={<SingleMovie />}>
-            <Route path="credits" element={<MovieCredits />} />
+            <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews />} />
           </Route>
         </Route>

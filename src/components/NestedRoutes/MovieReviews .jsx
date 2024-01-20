@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
+import { Line } from './MovieCast.styled';
 
 const MovieReviews = () => {
   const { movieId } = useParams();
@@ -21,19 +22,21 @@ const MovieReviews = () => {
     return <h1>Loading ...</h1>;
   }
 
-  console.log(movieReviews);
-
   return (
     <div>
-      <h1>MovieReviews</h1>
-      <ul>
-        {movieReviews.map(review => (
-          <li key={review.id}>
-            <h3>{review.author}</h3>
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
+      <Line />
+      {movieReviews.length ? (
+        <ul>
+          {movieReviews.map(review => (
+            <li key={review.id}>
+              <h3>{review.author}</h3>
+              <p>{review.content}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <h2>We don't have any reviews for this movie.</h2>
+      )}
     </div>
   );
 };

@@ -8,11 +8,13 @@ export const NavMenu = styled.nav`
 export const NavList = styled.ul`
   display: flex;
   gap: 20px;
+  color: #b2b7b9;
 `;
 export const StyledLink = styled(NavLink)`
   font-size: 32px;
   font-weight: 600;
   &.active {
-    color: red;
+    color: white;
+    font-weight: 700;
   }
 `;

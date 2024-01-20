@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
+import { Line, MovieCastList } from './MovieCast.styled';
+import { ActorCard } from 'components/ActorCard/ActorCard';
 
 const MovieCredits = () => {
   const { movieId } = useParams();
-  const [movieCredits, setMovieCredits] = useState(null);
+  const [movieCast, setMovieCast] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     getMovieCredits(movieId)
-      .then(setMovieCredits)
+      .then(setMovieCast)
       .catch(error => setError(error.message));
   }, [movieId]);
 
@@ -17,26 +19,18 @@ const MovieCredits = () => {
     return <Navigate to="/movies" />;
   }
 
-  if (!movieCredits) {
+  if (!movieCast) {
     return <h1>Loading ...</h1>;
   }
 
   return (
     <div>
-      <ul>
-        {movieCredits.map(cast => (
-          <li key={cast.id}>
-            {cast.profile_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                alt={cast.name}
-              />
-            )}
-            <h3>{cast.name}</h3>
-            <p>Character: {cast.character}</p>
-          </li>
+      <Line />
+      <MovieCastList>
+        {movieCast.map(cast => (
+          <ActorCard key={cast.id} cast={cast} />
         ))}
-      </ul>
+      </MovieCastList>
     </div>
   );
 };

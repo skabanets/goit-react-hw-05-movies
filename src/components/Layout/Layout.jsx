@@ -2,6 +2,7 @@ import { Navbar } from 'components/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 import { HeaderContainer, StyledHeader } from './Layout.styled';
 import { Container } from 'components/Container/Container.styled';
+import { Logo } from 'components/Logo/Logo';
 
 export const Layout = () => {
   return (
@@ -9,7 +10,7 @@ export const Layout = () => {
       <StyledHeader>
         <Container>
           <HeaderContainer>
-            <h1>Kinogo</h1>
+            <Logo />
             <Navbar />
           </HeaderContainer>
         </Container>

@@ -1,7 +1,20 @@
-import { Container } from 'components/Container/Container.styled';
+import { Section } from 'components/Section/Section';
 import { useState, useEffect } from 'react';
 import { Link, Navigate, Outlet, useParams } from 'react-router-dom';
 import { getMovieById } from 'services/api';
+import {
+  AdditionalInfoLink,
+  AdditionalInfolinks,
+  Genr,
+  GenresList,
+  MovieContent,
+  MovieImg,
+  MovieInfo,
+  MovieInfoItem,
+  MovieMainContent,
+  OverviewText,
+  Rating,
+} from './SIngleMovie.styled';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
@@ -28,28 +41,69 @@ const SingleMovie = () => {
     ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
     : defaultImg;
 
+  const movieYear = movie.release_date.substr(0, 4) || '';
+  const movieTitle = movie.name || movie.title;
+
+  const movieRating = movie.vote_average.toFixed(1);
+
+  const ratingColor = rating => {
+    if (rating >= 7) {
+      return '#778D45';
+    }
+
+    if (rating >= 5 && rating < 7) {
+      return '#ffa902 ';
+    }
+
+    return '#c41e3a';
+  };
+
   return (
-    <Container>
-      <div>
-        <div>
-          <img src={imgSrc} alt={movie.name || movie.title} />
-          <h2>{movie.name || movie.title}</h2>
-          <p>Rating: {movie.vote_average.toFixed(1)}/10</p>
-          <h3>Overview</h3>
-          <p>{movie?.overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {movie.genres.map(genr => (
-              <li key={genr.id}>{genr.name}</li>
-            ))}
-          </ul>
-        </div>
-        <hr />
-        <Link to="credits">Credits</Link>
-        <Link to="reviews">Reviews</Link>
+    <Section title={`${movieTitle} (${movieYear})`}>
+      <MovieContent>
+        <MovieMainContent>
+          <MovieImg src={imgSrc} alt={movie.name || movie.title} />
+          <MovieInfo>
+            <MovieInfoItem>
+              <h3>Rating:</h3>
+              <Rating $bg={ratingColor(+movieRating)}>
+                {movieRating} / 10
+              </Rating>
+            </MovieInfoItem>
+            {movieYear && (
+              <MovieInfoItem>
+                <h3>Year:</h3>
+                <p>{movieYear}</p>
+              </MovieInfoItem>
+            )}
+            <div>
+              <h3>Overview</h3>
+              <OverviewText>{movie?.overview}</OverviewText>
+            </div>
+            <MovieInfoItem>
+              <h3>Genres:</h3>
+              <GenresList>
+                {movie.genres.map(genre => (
+                  <Genr key={genre.id}>{genre.name}</Genr>
+                ))}
+              </GenresList>
+            </MovieInfoItem>
+            <MovieInfoItem>
+              <h3>Duration:</h3>
+              <p>{movie.runtime} minutes</p>
+            </MovieInfoItem>
+            <MovieInfoItem>
+              <h3>Additional information:</h3>
+              <AdditionalInfolinks>
+                <AdditionalInfoLink to="cast">Cast</AdditionalInfoLink>
+                <AdditionalInfoLink to="reviews">Reviews</AdditionalInfoLink>
+              </AdditionalInfolinks>
+            </MovieInfoItem>
+          </MovieInfo>
+        </MovieMainContent>
         <Outlet />
-      </div>
-    </Container>
+      </MovieContent>
+    </Section>
   );
 };
 

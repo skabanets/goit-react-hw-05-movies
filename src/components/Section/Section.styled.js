@@ -5,10 +5,11 @@ export const SectionWrapper = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 28px;
   line-height: 1.11;
   text-align: left;
   letter-spacing: 0.02em;
-  color: #646e74;
+  font-weight: 700;
+  color: #333031;
 `;

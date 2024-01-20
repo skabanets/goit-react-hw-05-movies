@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
   padding: 25px 0;
-  background-color: silver;
+  background-color: teal;
 `;
 
 export const HeaderContainer = styled.div`
