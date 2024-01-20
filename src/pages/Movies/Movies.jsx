@@ -1,7 +1,7 @@
 import { SearchMovieForm } from 'components/SearchMovieForm/SearchMovieForm';
 import { Section } from 'components/Section/Section';
 import { TrendingsMoviesList } from 'components/TrendingsMoviesList/TrendingsMoviesList';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getMoviesByName } from 'services/api';
 
 const Movies = () => {
@@ -9,32 +9,27 @@ const Movies = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    getMoviesByName(query).then(setMovies);
+    if (!query) return;
+
+    getMoviesByName(query)
+      .then(res => setMovies(res))
+      .catch(error => console.log(error.message));
   }, [query]);
 
   const handleSubmit = query => {
     setQuery(query);
   };
 
-  if (!movies) {
+  if (query && !movies) {
     return <h1>Loading ...</h1>;
-  }
-
-  console.log(query);
-  console.log('hiih');
-  if (query) {
-    console.log(true);
   }
 
   return (
     <div>
       <Section title={'Movies'}>
         <SearchMovieForm onSubmit={handleSubmit} />
-        {query && movies.length === 0 ? (
-          <h2>No films found for this request.</h2>
-        ) : (
-          <TrendingsMoviesList trandingMovies={movies} />
-        )}
+        {movies && <TrendingsMoviesList trandingMovies={movies} />}
+        {query && !movies.length && <h2>No films found for this request.</h2>}
       </Section>
     </div>
   );
