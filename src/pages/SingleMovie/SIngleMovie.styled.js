@@ -48,7 +48,7 @@ export const Rating = styled.p`
   background-color: ${props => props.$bg};
 `;
 
-export const AdditionalInfolinks = styled.div`
+export const AdditionalInfoLinks = styled.div`
   display: flex;
   align-items: baseline;
   gap: 10px;

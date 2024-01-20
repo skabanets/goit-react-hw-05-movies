@@ -13,19 +13,6 @@ const Home = () => {
   return (
     <Section title={'Trending today'}>
       <TrendingsMoviesList trandingMovies={trandingMovies} />
-      {/* <ul>
-        {trandingMovies.map(({ id, poster_path, name, title }) => (
-          <li key={id}>
-            <Link to={id.toString()}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                alt={name || title}
-              />
-              <h3>{name || title}</h3>
-            </Link>
-          </li>
-        ))}
-      </ul> */}
     </Section>
   );
 };

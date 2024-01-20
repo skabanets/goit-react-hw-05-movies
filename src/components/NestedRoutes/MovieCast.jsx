@@ -26,11 +26,15 @@ const MovieCredits = () => {
   return (
     <div>
       <Line />
-      <MovieCastList>
-        {movieCast.map(cast => (
-          <ActorCard key={cast.id} cast={cast} />
-        ))}
-      </MovieCastList>
+      {movieCast.length ? (
+        <MovieCastList>
+          {movieCast.map(cast => (
+            <ActorCard key={cast.id} cast={cast} />
+          ))}
+        </MovieCastList>
+      ) : (
+        <h2>We don't know any actors of this movie.</h2>
+      )}
     </div>
   );
 };
