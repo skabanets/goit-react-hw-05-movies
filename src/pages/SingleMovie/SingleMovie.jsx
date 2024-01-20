@@ -1,6 +1,6 @@
 import { Section } from 'components/Section/Section';
 import { useState, useEffect } from 'react';
-import { Link, Navigate, Outlet, useParams } from 'react-router-dom';
+import { Navigate, Outlet, useParams } from 'react-router-dom';
 import { getMovieById } from 'services/api';
 import {
   AdditionalInfoLink,
