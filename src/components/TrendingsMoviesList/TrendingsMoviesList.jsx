@@ -4,7 +4,7 @@ import { StyledTrendingsMovies } from './TrendingsMoviesList.styled';
 export const TrendingsMoviesList = ({ trandingMovies }) => {
   return (
     <StyledTrendingsMovies>
-      {trandingMovies.map(movie => (
+      {trandingMovies?.map(movie => (
         <TrendingsMoviesItem key={movie.id} movieInfo={movie} />
       ))}
     </StyledTrendingsMovies>

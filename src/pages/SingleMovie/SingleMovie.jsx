@@ -15,17 +15,11 @@ import {
   OverviewText,
   Rating,
 } from './SIngleMovie.styled';
+import { useHhttp } from 'hooks/useHhttp';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getMovieById(movieId)
-      .then(setMovie)
-      .catch(error => setError(error.message));
-  }, [movieId]);
+  const [movie, , error] = useHhttp(getMovieById, movieId);
 
   if (error) {
     return <Navigate to="*" />;
@@ -58,9 +52,10 @@ const SingleMovie = () => {
     return '#c41e3a';
   };
 
-  console.log(movieRating);
   return (
-    <Section title={`${movieTitle} (${movieYear})`}>
+    <Section
+      title={movieYear ? `${movieTitle} (${movieYear})` : `${movieTitle}`}
+    >
       <MovieContent>
         <MovieMainContent>
           <MovieImg src={moviePoster} alt={movie.name || movie.title} />

@@ -1,19 +1,12 @@
-import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
 import { Line } from './MovieCast.styled';
 import { ReviewText, ReviewsList } from './MovieReviews.styled';
+import { useHhttp } from 'hooks/useHhttp';
 
 const MovieReviews = () => {
   const { movieId } = useParams();
-  const [movieReviews, setMovieReviews] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getMovieReviews(movieId)
-      .then(setMovieReviews)
-      .catch(error => setError(error.message));
-  }, [movieId]);
+  const [movieReviews, , error] = useHhttp(getMovieReviews, movieId);
 
   if (error) {
     return <Navigate to="/movies" />;

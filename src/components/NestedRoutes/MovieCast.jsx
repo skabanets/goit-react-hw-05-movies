@@ -1,19 +1,12 @@
-import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { getMovieCredits } from 'services/api';
+import { getMovieCast } from 'services/api';
 import { Line, MovieCastList } from './MovieCast.styled';
 import { ActorCard } from 'components/ActorCard/ActorCard';
+import { useHhttp } from 'hooks/useHhttp';
 
 const MovieCredits = () => {
   const { movieId } = useParams();
-  const [movieCast, setMovieCast] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getMovieCredits(movieId)
-      .then(setMovieCast)
-      .catch(error => setError(error.message));
-  }, [movieId]);
+  const [movieCast, , error] = useHhttp(getMovieCast, movieId);
 
   if (error) {
     return <Navigate to="/movies" />;
