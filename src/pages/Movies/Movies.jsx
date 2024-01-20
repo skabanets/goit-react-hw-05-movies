@@ -3,6 +3,7 @@ import { Section } from 'components/Section/Section';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { getMoviesByName } from 'services/api';
+import { Loader } from 'components/Loader/Loader';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -21,7 +22,7 @@ const Movies = () => {
   };
 
   if (query && !movies) {
-    return <h1>Loading ...</h1>;
+    return <Loader />;
   }
 
   return (

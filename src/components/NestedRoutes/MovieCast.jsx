@@ -3,6 +3,7 @@ import { getMovieCast } from 'services/api';
 import { Line, MovieCastList } from './MovieCast.styled';
 import { ActorCard } from 'components/ActorCard/ActorCard';
 import { useHhttp } from 'hooks/useHhttp';
+import { Loader } from 'components/Loader/Loader';
 
 const MovieCredits = () => {
   const { movieId } = useParams();
@@ -13,7 +14,7 @@ const MovieCredits = () => {
   }
 
   if (!movieCast) {
-    return <h1>Loading ...</h1>;
+    return <Loader />;
   }
 
   return (

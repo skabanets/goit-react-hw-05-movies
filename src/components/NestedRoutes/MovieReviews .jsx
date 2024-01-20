@@ -3,6 +3,7 @@ import { getMovieReviews } from 'services/api';
 import { Line } from './MovieCast.styled';
 import { ReviewText, ReviewsList } from './MovieReviews.styled';
 import { useHhttp } from 'hooks/useHhttp';
+import { Loader } from 'components/Loader/Loader';
 
 const MovieReviews = () => {
   const { movieId } = useParams();
@@ -13,7 +14,7 @@ const MovieReviews = () => {
   }
 
   if (!movieReviews) {
-    return <h1>Loading ...</h1>;
+    return <Loader />;
   }
 
   return (

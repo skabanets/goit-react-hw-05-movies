@@ -15,6 +15,7 @@ import {
   Rating,
 } from './SIngleMovie.styled';
 import { useHhttp } from 'hooks/useHhttp';
+import { Loader } from 'components/Loader/Loader';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
@@ -25,7 +26,7 @@ const SingleMovie = () => {
   }
 
   if (!movie) {
-    return <h1>Loading ...</h1>;
+    return <Loader />;
   }
 
   const defaultMoviePoster =
