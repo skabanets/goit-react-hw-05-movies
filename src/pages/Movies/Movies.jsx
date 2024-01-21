@@ -33,8 +33,6 @@ const Movies = () => {
     return <Navigate to="/*" />;
   }
 
-  console.log(error);
-
   if (query && !movies) {
     return <Loader />;
   }
