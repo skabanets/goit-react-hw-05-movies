@@ -21,7 +21,7 @@ export const StyledLinkGoHome = styled(Link)`
   align-items: center;
   gap: 5px;
   color: white;
-  background-color: darkblue;
+  background-color: teal;
   border-radius: 5px;
   padding: 6px 12px;
 `;

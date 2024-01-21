@@ -79,7 +79,7 @@ export const ButtonGoBack = styled.button`
   align-items: center;
   gap: 5px;
   color: white;
-  background-color: darkblue;
+  background-color: teal;
   border-radius: 5px;
   padding: 3px 6px;
 `;
