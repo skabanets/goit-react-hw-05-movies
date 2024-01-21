@@ -24,7 +24,7 @@ import {
 import { useHhttp } from 'hooks/useHhttp';
 import { Loader } from 'components/Loader/Loader';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
@@ -124,7 +124,9 @@ const SingleMovie = () => {
             </MovieInfoItem>
           </MovieInfo>
         </MovieMainContent>
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </MovieContent>
     </Section>
   );
