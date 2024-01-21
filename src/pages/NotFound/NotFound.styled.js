@@ -13,6 +13,7 @@ export const NotFoundPageWrapper = styled.div`
 `;
 
 export const StyledLinkGoHome = styled(Link)`
+  align-items: center;
   position: relative;
   top: 200px;
   font-size: 32px;

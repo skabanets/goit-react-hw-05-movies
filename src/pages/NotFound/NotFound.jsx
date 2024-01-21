@@ -1,9 +1,13 @@
 import { NotFoundPageWrapper, StyledLinkGoHome } from './NotFound.styled';
+import { GiClick } from 'react-icons/gi';
 
 const NotFound = () => {
   return (
     <NotFoundPageWrapper>
-      <StyledLinkGoHome to="/">Go to home</StyledLinkGoHome>
+      <StyledLinkGoHome to="/">
+        Home page
+        <GiClick />
+      </StyledLinkGoHome>
     </NotFoundPageWrapper>
   );
 };
