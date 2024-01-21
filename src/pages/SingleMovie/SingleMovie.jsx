@@ -1,9 +1,16 @@
 import { Section } from 'components/Section/Section';
-import { Navigate, Outlet, useParams } from 'react-router-dom';
+import {
+  Navigate,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { getMovieById } from 'services/api';
 import {
   AdditionalInfoLink,
   AdditionalInfoLinks,
+  ButtonGoBack,
   Genr,
   GenresList,
   MovieContent,
@@ -16,13 +23,22 @@ import {
 } from './SIngleMovie.styled';
 import { useHhttp } from 'hooks/useHhttp';
 import { Loader } from 'components/Loader/Loader';
+import { IoChevronBackCircleOutline } from 'react-icons/io5';
+import { useRef } from 'react';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
   const [movie, , error] = useHhttp(getMovieById, movieId);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const goBackLink = useRef(location.state?.from || '/');
+
+  const handleBackButtonClick = () => {
+    navigate(goBackLink.current);
+  };
 
   if (error) {
-    return <Navigate to="*" />;
+    return <Navigate to="/*" />;
   }
 
   if (!movie) {
@@ -57,6 +73,9 @@ const SingleMovie = () => {
       title={movieYear ? `${movieTitle} (${movieYear})` : `${movieTitle}`}
     >
       <MovieContent>
+        <ButtonGoBack onClick={handleBackButtonClick}>
+          <IoChevronBackCircleOutline /> Go back
+        </ButtonGoBack>
         <MovieMainContent>
           <MovieImg src={moviePoster} alt={movie.name || movie.title} />
           <MovieInfo>

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const MovieContent = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   background-color: white;
   padding: 25px;
   gap: 25px;
@@ -71,4 +72,14 @@ export const Genr = styled.li`
   padding: 3px 6px;
   background-color: lightblue;
   border-radius: 5px;
+`;
+
+export const ButtonGoBack = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+  background-color: darkblue;
+  border-radius: 5px;
+  padding: 3px 6px;
 `;

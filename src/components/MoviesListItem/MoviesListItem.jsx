@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   MoviePoster,
   MovieSubtitle,
@@ -7,6 +7,7 @@ import {
 
 export const MoviesItem = ({ movieInfo }) => {
   const { id, poster_path, name, title } = movieInfo;
+  const location = useLocation();
 
   const defaultMoviePoster =
     'https://www.thetechedvocate.org/wp-content/uploads/2023/11/30-5.jpg';
@@ -16,7 +17,7 @@ export const MoviesItem = ({ movieInfo }) => {
 
   return (
     <StyledMovie>
-      <Link to={`/movies/${id}`}>
+      <Link state={{ from: location }} to={`/movies/${id}`}>
         <MoviePoster src={moviePoster} alt={name || title} />
         <MovieSubtitle>{name || title}</MovieSubtitle>
       </Link>
