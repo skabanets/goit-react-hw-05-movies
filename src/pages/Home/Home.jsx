@@ -3,18 +3,24 @@ import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useHhttp } from 'hooks/useHhttp';
 import { getTrendingsMovies } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
+import { toast } from 'react-toastify';
 
 const Home = () => {
-  const [movies] = useHhttp(getTrendingsMovies);
+  const [movies, , error] = useHhttp(getTrendingsMovies);
 
-  if (!movies) {
+  if (error) {
+    toast.error(`The request failed! Reload the page or try again later.`);
     return <Loader />;
   }
 
+  if (!movies) return <Loader />;
+
   return (
-    <Section title={'Trending today'}>
-      <MoviesList movies={movies} />
-    </Section>
+    <div>
+      <Section title={'Trending today'}>
+        <MoviesList movies={movies} />
+      </Section>
+    </div>
   );
 };
 

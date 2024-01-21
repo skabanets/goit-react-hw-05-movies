@@ -5,6 +5,8 @@ import { Container } from 'components/Container/Container.styled';
 import { Logo } from 'components/Logo/Logo';
 import { Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Layout = () => {
   return (
@@ -21,6 +23,8 @@ export const Layout = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
+
+      <ToastContainer />
     </>
   );
 };

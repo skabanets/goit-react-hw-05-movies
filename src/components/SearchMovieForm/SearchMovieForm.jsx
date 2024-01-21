@@ -26,6 +26,7 @@ export const SearchMovieForm = ({ onSubmit }) => {
         name="name"
         value={query}
         onChange={handleChange}
+        required
       />
       <MovieFormSubmitBtn type="submit">Search</MovieFormSubmitBtn>
     </MovieForm>

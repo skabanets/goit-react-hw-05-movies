@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { getMoviesByName } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 import { Navigate, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -13,10 +14,7 @@ const Movies = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.search) {
-      setQuery(location.search.slice(7));
-    }
-
+    if (location.search) setQuery(location.search.slice(7));
     if (!query) return;
 
     getMoviesByName(query)
@@ -30,12 +28,11 @@ const Movies = () => {
   };
 
   if (error) {
-    return <Navigate to="/*" />;
+    toast.error(`The request failed! Reload the page or try again later.`);
+    return <Navigate to="/" />;
   }
 
-  if (query && !movies) {
-    return <Loader />;
-  }
+  if (query && !movies) return <Loader />;
 
   return (
     <div>

@@ -1,21 +1,23 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/api';
 import { Line, MovieCastList } from './MovieCast.styled';
 import { ActorCard } from 'components/ActorCard/ActorCard';
 import { useHhttp } from 'hooks/useHhttp';
 import { Loader } from 'components/Loader/Loader';
+import { toast } from 'react-toastify';
 
 const MovieCredits = () => {
   const { movieId } = useParams();
   const [movieCast, , error] = useHhttp(getMovieCast, movieId);
 
   if (error) {
-    return <Navigate to="/movies" />;
+    toast.error(
+      `The request failed! Please reload the page or try again later.`
+    );
+    return <></>;
   }
 
-  if (!movieCast) {
-    return <Loader />;
-  }
+  if (!movieCast) return <Loader />;
 
   return (
     <div>

@@ -25,6 +25,8 @@ import { useHhttp } from 'hooks/useHhttp';
 import { Loader } from 'components/Loader/Loader';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 import { Suspense, useRef } from 'react';
+import { getRatingColor } from 'helpers/getRatingColor';
+import { toast } from 'react-toastify';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
@@ -38,12 +40,11 @@ const SingleMovie = () => {
   };
 
   if (error) {
-    return <Navigate to="/*" />;
+    toast.error(`Movie not found! Please reload the page or try again later.`);
+    return <Navigate to="/" />;
   }
 
-  if (!movie) {
-    return <Loader />;
-  }
+  if (!movie) return <Loader />;
 
   const defaultMoviePoster =
     'https://www.thetechedvocate.org/wp-content/uploads/2023/11/30-5.jpg';
@@ -53,20 +54,7 @@ const SingleMovie = () => {
 
   const movieYear = movie.release_date.substr(0, 4) || '';
   const movieTitle = movie.name || movie.title;
-
   const movieRating = movie.vote_average.toFixed(1);
-
-  const ratingColor = rating => {
-    if (rating >= 7) {
-      return '#778D45';
-    }
-
-    if (rating >= 5 && rating < 7) {
-      return '#ffa902 ';
-    }
-
-    return '#c41e3a';
-  };
 
   return (
     <Section
@@ -82,7 +70,7 @@ const SingleMovie = () => {
             {movieRating !== '0.0' && (
               <MovieInfoItem>
                 <h3>Rating:</h3>
-                <Rating $bg={ratingColor(+movieRating)}>
+                <Rating $bg={() => getRatingColor(+movieRating)}>
                   {movieRating} / 10
                 </Rating>
               </MovieInfoItem>
