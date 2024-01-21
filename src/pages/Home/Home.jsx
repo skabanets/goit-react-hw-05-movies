@@ -16,11 +16,9 @@ const Home = () => {
   if (!movies) return <Loader />;
 
   return (
-    <div>
-      <Section title={'Trending today'}>
-        <MoviesList movies={movies} />
-      </Section>
-    </div>
+    <Section title={'Trending today'}>
+      <MoviesList movies={movies} />
+    </Section>
   );
 };
 

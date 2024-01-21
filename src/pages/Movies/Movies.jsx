@@ -35,13 +35,11 @@ const Movies = () => {
   if (query && !movies) return <Loader />;
 
   return (
-    <div>
-      <Section title={'Movies'}>
-        <SearchMovieForm onSubmit={handleSubmit} />
-        {movies && <MoviesList movies={movies} />}
-        {query && !movies.length && <h2>No films found for this request.</h2>}
-      </Section>
-    </div>
+    <Section title={'Movies'}>
+      <SearchMovieForm onSubmit={handleSubmit} />
+      {movies && <MoviesList movies={movies} />}
+      {query && !movies.length && <h2>No films found for this request.</h2>}
+    </Section>
   );
 };
 

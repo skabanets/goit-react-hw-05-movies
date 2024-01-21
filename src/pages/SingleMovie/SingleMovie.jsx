@@ -7,6 +7,13 @@ import {
   useParams,
 } from 'react-router-dom';
 import { getMovieById } from 'services/api';
+
+import { useHhttp } from 'hooks/useHhttp';
+import { Loader } from 'components/Loader/Loader';
+import { IoChevronBackCircleOutline } from 'react-icons/io5';
+import { Suspense, useRef } from 'react';
+import { getRatingColor } from 'helpers/getRatingColor';
+import { toast } from 'react-toastify';
 import {
   AdditionalInfoLink,
   AdditionalInfoLinks,
@@ -20,13 +27,7 @@ import {
   MovieMainContent,
   OverviewText,
   Rating,
-} from './SIngleMovie.styled';
-import { useHhttp } from 'hooks/useHhttp';
-import { Loader } from 'components/Loader/Loader';
-import { IoChevronBackCircleOutline } from 'react-icons/io5';
-import { Suspense, useRef } from 'react';
-import { getRatingColor } from 'helpers/getRatingColor';
-import { toast } from 'react-toastify';
+} from './SingleMovie.styled';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
