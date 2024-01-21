@@ -27,7 +27,7 @@ import {
   MovieMainContent,
   OverviewText,
   Rating,
-} from './SingleMovie.styled';
+} from './SIngleMovie.styled';
 
 const SingleMovie = () => {
   const { movieId } = useParams();
